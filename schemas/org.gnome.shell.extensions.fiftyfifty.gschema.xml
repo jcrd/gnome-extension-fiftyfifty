@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="org.gnome.shell.extensions.fiftyfifty" path="/org/gnome/shell/extensions/fiftyfifty/">
+        <key type="as" name="toggle">
+            <default><![CDATA[['<Super>f']]]></default>
+            <summary>Toggle split</summary>
+        </key>
+    </schema>
+</schemalist>
