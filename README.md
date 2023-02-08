@@ -11,7 +11,7 @@ This has one of three effects depending on the tiled and focused state of the tw
 - If at least one of the two most recently focused windows is not tiled, tile both with the focused window on the left.
 - If the focused window is tiled on the right, swap it with the window on the left.
 - If the focused window is tiled on the left, maximize the two most recently focused windows.
-- If fewer than two windows have focus history, do nothing.
+- If only one window has focus history, maximize it.
 
 # License
 

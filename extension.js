@@ -93,7 +93,10 @@ class Extension {
         .focusHistory.slice(0, 2)
         .reverse()
 
-      if (windows.length === 1) return
+      if (windows.length === 1) {
+        placeWindow(windows[0], generateRects(windows[0], 0).workspace)
+        return
+      }
 
       let cachedRects = []
       let i = 0
