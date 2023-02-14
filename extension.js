@@ -62,6 +62,7 @@ class Extension {
 
   updateFocusHistory(window, focused = true) {
     const data = this.workspaces.get(window.get_workspace())
+    if (!data) return
     data.focusHistory = data.focusHistory.filter((w) => w !== window)
     if (focused) data.focusHistory.unshift(window)
   }
