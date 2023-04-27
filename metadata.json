@@ -4,5 +4,5 @@
   "description": "Split windows 50/50",
   "url": "https://github.com/jcrd/gnome-extension-fiftyfifty",
   "version": 1,
-  "shell-version": ["43"]
+  "shell-version": ["43", "44"]
 }
