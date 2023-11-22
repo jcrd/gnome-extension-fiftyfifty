@@ -18,10 +18,11 @@
 
 /* exported init */
 
-const { Shell, Meta } = imports.gi
+import Meta from "gi://Meta"
+import Shell from "gi://Shell"
 
-const ExtensionUtils = imports.misc.extensionUtils
-const Main = imports.ui.main
+import { Extension } from "resource:///org/gnome/shell/extensions/extension.js"
+import * as Main from "resource:///org/gnome/shell/ui/main.js"
 
 function placeWindow(window, r) {
   window.unmaximize(Meta.MaximizeFlags.HORIZONTAL)
@@ -52,8 +53,9 @@ function disconnectSignals(obj, signals) {
   signals.forEach((signal) => obj.disconnect(signal))
 }
 
-class Extension {
-  constructor() {
+export default class FiftyFiftyExtension extends Extension {
+  constructor(metadata) {
+    super(metadata)
     this.workspaces = new Map()
     this.windowSignals = new Map()
     this.globalSignals = []
@@ -83,9 +85,7 @@ class Extension {
 
     const mode = Shell.ActionMode.NORMAL
     const flag = Meta.KeyBindingFlags.IGNORE_AUTOREPEAT
-    const settings = ExtensionUtils.getSettings(
-      "org.gnome.shell.extensions.fiftyfifty"
-    )
+    const settings = this.getSettings("org.gnome.shell.extensions.fiftyfifty")
 
     Main.wm.addKeybinding("toggle", settings, flag, mode, () => {
       const workspace = global.workspace_manager.get_active_workspace()
@@ -166,8 +166,4 @@ class Extension {
     disconnectSignals(workspace, this.workspaces.get(workspace).signals)
     this.workspaces.delete(workspace)
   }
-}
-
-function init() {
-  return new Extension()
 }
